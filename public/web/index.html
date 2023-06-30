@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 
 <head>
   <!--
@@ -18,7 +18,8 @@
   <base href="/">
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <meta name="keywords" content="来一起漫部，成就你的每一份热爱">
   <meta name="description" content="来一起漫部，成就你的每一份热爱">
@@ -34,7 +35,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <link rel="manifest" href="manifest.json">
-  
+
   <style>
     /* IOS 禁止调整浏览器字体大小 */
     body {
@@ -57,12 +58,17 @@
       } else {
         document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
       }
+
       function handleFontSize() {
         // 设置网页字体为默认大小
-        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+        WeixinJSBridge.invoke('setFontSizeCallback', {
+          'fontSize': 0
+        });
         // 重写设置网页字体大小的事件
         WeixinJSBridge.on('menu:setfont', function () {
-          WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+          WeixinJSBridge.invoke('setFontSizeCallback', {
+            'fontSize': 0
+          });
         });
       }
     })();
@@ -79,38 +85,39 @@
   <div id="loading">
     <style>
       body {
-        background-color: #0F0F0F;
         inset: 0;
         overflow: hidden;
         margin: 0;
         padding: 0;
         position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
       }
 
       #loading {
-        background-color: #0F0F0F;
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: center;
         width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       #loading img {
-        background-color: #0F0F0F;
+        border-radius: 16px;
+        width: 90px;
+        height: 90px;
         animation: 1s ease-in-out 0s infinite alternate breathe;
         opacity: .66;
         transition: opacity .4s;
       }
 
       #loading.main_done img {
-        background-color: #0F0F0F;
         opacity: 1;
       }
 
       #loading.init_done img {
-        background-color: #0F0F0F;
-        animation: .33s ease-in-out 0s 1 forwards zooooom;
         opacity: .05;
       }
 
@@ -121,16 +128,6 @@
 
         to {
           transform: scale(0.95)
-        }
-      }
-
-      @keyframes zooooom {
-        from {
-          transform: scale(1)
-        }
-
-        to {
-          transform: scale(3)
         }
       }
     </style>
