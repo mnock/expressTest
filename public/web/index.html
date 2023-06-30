@@ -16,23 +16,57 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <base href="/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta name="keywords" content="来一起漫部，成就你的每一份热爱">
+  <meta name="description" content="来一起漫部，成就你的每一份热爱">
+  <title>来一起漫部</title>
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="new_web">
+  <meta name="apple-mobile-web-app-title" content="来一起漫部">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>new_web</title>
   <link rel="manifest" href="manifest.json">
+  
+  <style>
+    /* IOS 禁止调整浏览器字体大小 */
+    body {
+      -webkit-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
+      -moz-text-size-adjust: 100% !important;
+    }
 
+    /* 元素是否对鼠标事件做出反应 */
+    flt-glass-pane flt-scene-host p,
+    flt-glass-pane flt-scene-host span {
+      pointer-events: initial !important;
+    }
+  </style>
+  <script>
+    // Android 微信浏览器 禁止调整浏览器字体大小
+    (function () {
+      if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+        handleFontSize();
+      } else {
+        document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+      }
+      function handleFontSize() {
+        // 设置网页字体为默认大小
+        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+        // 重写设置网页字体大小的事件
+        WeixinJSBridge.on('menu:setfont', function () {
+          WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+        });
+      }
+    })();
+  </script>
   <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = "3399187940";
